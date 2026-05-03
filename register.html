@@ -27,40 +27,40 @@
   <!-- INPUT -->
   <div class="input-group">
     <i class="fa fa-user"></i>
-    <input type="text" placeholder="Họ và tên">
+    <input type="text" id="fullname" placeholder="Họ và tên">
   </div>
 
   <div class="input-group">
     <i class="fa fa-phone"></i>
-    <input type="text" placeholder="Số điện thoại">
+    <input type="text" id="phone" placeholder="Số điện thoại">
   </div>
 
   <div class="input-group">
     <i class="fa fa-envelope"></i>
-    <input type="email" placeholder="Email">
+    <input type="email" id="email" placeholder="Email">
   </div>
 
   <div class="input-group">
     <i class="fa fa-lock"></i>
-    <input type="password" placeholder="Mật khẩu">
+   <input type="password" id="password" placeholder="Mật khẩu">
     <i class="fa fa-eye toggle-pass"></i>
   </div>
 
   <div class="input-group">
     <i class="fa fa-lock"></i>
-    <input type="password" placeholder="Nhập lại mật khẩu">
+    <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu">
   </div>
 
   <!-- EMPLOYER -->
   <div id="employerFields">
     <div class="input-group">
       <i class="fa fa-building"></i>
-      <input type="text" placeholder="Tên công ty">
+      <input type="text" id="companyName" placeholder="Tên công ty">
     </div>
 
     <div class="input-group">
       <i class="fa fa-location-dot"></i>
-      <input type="text" placeholder="Địa chỉ công ty">
+      <input type="text" id="companyAddress" placeholder="Địa chỉ công ty">
     </div>
 
     <div class="input-group">
@@ -70,6 +70,7 @@
         <option>Marketing</option>
         <option>Khách sạn</option>
         <option>Sản xuất</option>
+        <option>Dịch vụ</option>
       </select>
     </div>
   </div>
@@ -84,7 +85,7 @@
   </div>
 
   <!-- BUTTON -->
-  <button class="btn">Đăng ký →</button>
+ <button class="btn" id="registerBtn">Đăng ký →</button>
 
   <p class="bottom-text">
     Đã có tài khoản? <a href="login.html">Đăng nhập</a>

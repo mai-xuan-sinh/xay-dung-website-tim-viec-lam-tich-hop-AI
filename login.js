@@ -1,60 +1,55 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ===== CAPTCHA =====
-  function generateCaptcha() {
-    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-    let captcha = "";
+  const loginBtn = document.getElementById("loginBtn");
 
-    for (let i = 0; i < 5; i++) {
-      captcha += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
+  // SHOW PASSWORD
+  document.querySelector(".toggle-pass").onclick = function () {
+    const input = document.getElementById("loginPassword");
+    input.type = input.type === "password" ? "text" : "password";
+    this.classList.toggle("fa-eye-slash");
+  };
 
-    document.getElementById("captchaText").innerText = captcha;
+  // AUTO FILL nếu đã ghi nhớ
+  const savedUser = JSON.parse(localStorage.getItem("rememberUser"));
+  if (savedUser) {
+    document.getElementById("loginEmail").value = savedUser.email;
+    document.getElementById("loginPassword").value = savedUser.password;
+    document.getElementById("rememberMe").checked = true;
   }
 
-  generateCaptcha();
+  // LOGIN
+  loginBtn.onclick = () => {
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const remember = document.getElementById("rememberMe").checked;
 
-  document.getElementById("reloadCaptcha").onclick = generateCaptcha;
-
-
-  // ===== ROLE SWITCH =====
-  const buttons = document.querySelectorAll(".switch button");
-  let selectedRole = "candidate";
-
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      buttons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      selectedRole = btn.getAttribute("data-role");
-      console.log("Role:", selectedRole);
-    });
-  });
-
-
-  // ===== LOGIN =====
-  document.querySelector(".btn-login").addEventListener("click", () => {
-
-    const input = document.getElementById("captchaInput").value.trim();
-    const real = document.getElementById("captchaText").innerText;
-
-    if (!input) {
-      alert("Vui lòng nhập captcha!");
+    if (!email || !password) {
+      alert("Vui lòng nhập đầy đủ thông tin!");
       return;
     }
 
-    if (input.toUpperCase() !== real) {
-      alert("Sai captcha!");
-      generateCaptcha();
-      document.getElementById("captchaInput").value = "";
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (!user) {
+      alert("Sai email hoặc mật khẩu!");
       return;
     }
 
-    alert(
-      "Đăng nhập thành công!\nVai trò: " +
-      (selectedRole === "candidate" ? "Ứng viên" : "Nhà tuyển dụng")
-    );
+    // LƯU SESSION LOGIN
+    localStorage.setItem("currentUser", JSON.stringify(user));
 
-  });
+    // GHI NHỚ
+    if (remember) {
+      localStorage.setItem("rememberUser", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("rememberUser");
+    }
+
+    alert("Đăng nhập thành công!");
+
+    window.location.href = "index.html";
+  };
 
 });

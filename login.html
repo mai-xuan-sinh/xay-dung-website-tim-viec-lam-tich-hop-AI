@@ -23,24 +23,26 @@
     <!-- EMAIL -->
     <div class="input-group">
       <i class="fa fa-envelope"></i>
-      <input type="email" placeholder="Email">
+      <input type="email" id="loginEmail" placeholder="Email">
     </div>
 
     <!-- PASSWORD -->
     <div class="input-group">
       <i class="fa fa-lock"></i>
-      <input type="password" placeholder="Mật khẩu">
-      <i class="fa fa-eye"></i>
+    <input type="password" id="loginPassword" placeholder="Mật khẩu">
+<i class="fa fa-eye toggle-pass"></i>
     </div>
 
     <!-- OPTIONS -->
     <div class="options">
-      <label><input type="checkbox"> Ghi nhớ đăng nhập</label>
+      <label>
+  <input type="checkbox" id="rememberMe"> Ghi nhớ đăng nhập
+</label>
       <a href="#">Quên mật khẩu?</a>
     </div>
 
     <!-- BUTTON -->
-    <button class="btn-login">Đăng nhập →</button>
+   <button class="btn-login" id="loginBtn">Đăng nhập →</button>
 
     <p class="register">
       Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a>

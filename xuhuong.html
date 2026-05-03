@@ -5,31 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xu hướng thị trường lao động Đà Nẵng 2026</title>
     <link rel="stylesheet" href="xuhuong.css">
+    <!-- Font Awesome để hiển thị icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- NAVBAR (Nền trắng, Logo xanh) -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-main">DANANG WORK</span>
+            <p class="logo-sub">🔍 Tìm việc thông minh tại Đà Nẵng</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="trangvieclam.html">Việc làm</a></li>
+            <li><a href="congty.html">Công ty</a></li>
+            <li class="active"><a href="xuhuong.html">Xu hướng</a></li>
+            <li><a href="huongdan.html">Hướng dẫn</a></li>
+            <li><a href="#">Tạo CV</a></li>
+            <li><a href="#">Hỗ trợ</a></li>
+        </ul>
+        <div class="user-actions">
+            <div class="notif-icons">
+                <i class="fa-regular fa-bell"><span class="badge-count">3</span></i>
+                <i class="fa-regular fa-heart"><span class="badge-count">5</span></i>
+            </div>
+            <button class="btn-login">Đăng nhập</button>
+            <button class="btn-register">Đăng ký</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
     <header class="hero-section">
         <div class="overlay"></div>
-        <nav class="navbar">
-            <div class="logo">DANANG WORK <span>🔍 Tìm việc thông minh tại Đà Nẵng</span></div>
-            <ul class="nav-links">
-                <li><a href="index.html">Trang chủ</a></li>
-                <li><a href="vieclam.html">Việc làm</a></li>
-                <li><a href="congty.html">Công ty</a></li>
-                <li class="active"><a href="xuhuong.html">Xu hướng</a></li>
-                <li><a href="huongdan.html">Hướng dẫn</a></li>
-                <li><a href="taocv.html">Tạo CV</a></li>
-                <li><a href="hotro.html">Hỗ trợ</a></li>
-            </ul>
-            <div class="user-actions">
-                <button>Đăng nhập</button>
-                <button class="btn-register">Đăng ký</button>
-            </div>
-        </nav>
-
         <div class="hero-content">
-            <div class="badge"><i class="fa-solid fa-trophy"></i> Báo cáo thường niên 2026</div>
+            <div class="report-badge">
+                <i class="fa-solid fa-trophy"></i> Báo cáo thường niên 2026
+            </div>
             <h1>Thị trường lao động <br> <span>Đà Nẵng 2026</span></h1>
             <p>Phân tích chuyên sâu về xu hướng tuyển dụng, mức lương và kỹ năng hot nhất tại thành phố đáng sống nhất Việt Nam</p>
             
@@ -46,46 +58,50 @@
     </header>
 
     <main class="container">
-        <!-- 4 THẺ THỐNG KÊ -->
+        <!-- 4 THẺ THỐNG KÊ (Đè lên banner) -->
         <div class="stats-grid">
-            <div class="stat-card blue">
+            <div class="stat-card">
                 <div class="stat-header">
-                    <div class="icon-box"><i class="fa-solid fa-briefcase"></i></div>
-                    <span class="percent">+32%</span>
+                    <div class="icon-box blue-bg"><i class="fa-solid fa-briefcase"></i></div>
+                    <span class="percent blue-text">+32%</span>
                 </div>
-                <h2>1,250+</h2>
-                <p>Việc làm mới</p>
-                <div class="progress-bar"><div class="fill" style="width: 70%"></div></div>
+                <h2>121+</h2>
+                <p>Việc làm</p>
+                <div class="progress-bar"><div class="fill blue-bar" style="width: 40%"></div></div>
             </div>
-            <div class="stat-card green">
+
+            <div class="stat-card">
                 <div class="stat-header">
-                    <div class="icon-box"><i class="fa-solid fa-building"></i></div>
-                    <span class="percent">+18%</span>
+                    <div class="icon-box green-bg"><i class="fa-solid fa-building"></i></div>
+                    <span class="percent green-text">+18%</span>
                 </div>
-                <h2>85+</h2>
+                <h2>50+</h2>
                 <p>Công ty</p>
-                <div class="progress-bar"><div class="fill" style="width: 45%"></div></div>
+                <div class="progress-bar"><div class="fill green-bar" style="width: 60%"></div></div>
             </div>
-            <div class="stat-card purple">
+
+            <div class="stat-card">
                 <div class="stat-header">
-                    <div class="icon-box"><i class="fa-solid fa-users"></i></div>
-                    <span class="percent">+45%</span>
+                    <div class="icon-box purple-bg"><i class="fa-solid fa-users"></i></div>
+                    <span class="percent purple-text">+45%</span>
                 </div>
-                <h2>12,400+</h2>
+                <h2>5,000+</h2>
                 <p>Ứng viên</p>
-                <div class="progress-bar"><div class="fill" style="width: 85%"></div></div>
+                <div class="progress-bar"><div class="fill purple-bar" style="width: 80%"></div></div>
             </div>
-            <div class="stat-card orange">
+
+            <div class="stat-card">
                 <div class="stat-header">
-                    <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
-                    <span class="percent">+15%</span>
+                    <div class="icon-box orange-bg"><i class="fa-solid fa-chart-line"></i></div>
+                    <span class="percent orange-text">+15%</span>
                 </div>
-                <h2>18.5M</h2>
+                <h2>15.2M</h2>
                 <p>Lương TB</p>
-                <div class="progress-bar"><div class="fill" style="width: 60%"></div></div>
+                <div class="progress-bar"><div class="fill orange-bar" style="width: 35%"></div></div>
             </div>
         </div>
 
+        <!-- TABS NAVIGATION -->
         <div class="tabs-nav">
             <button class="tab-btn active"><i class="fa-solid fa-chart-simple"></i> Tổng quan thị trường</button>
             <button class="tab-btn"><i class="fa-solid fa-desktop"></i> Phân tích ngành</button>
@@ -94,39 +110,40 @@
             <button class="tab-btn"><i class="fa-solid fa-rocket"></i> Dự báo 2030</button>
         </div>
 
+        <!-- PHÂN TÍCH NGÀNH -->
         <div class="industry-grid">
             <div class="industry-card border-blue">
                 <div class="ind-header">
                     <h3>Công nghệ thông tin</h3>
-                    <span class="trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +32%</span>
+                    <span class="trend-tag"><i class="fa-solid fa-arrow-trend-up"></i> +32%</span>
                 </div>
-                <p>Nhu cầu lập trình viên tăng cao, đặc biệt là mảng AI và Cloud.</p>
-                <div class="ind-footer"><span>Việc làm</span><strong>450+</strong></div>
+                <p>Nhu cầu tuyển dụng IT tăng cao</p>
+                <div class="ind-footer">
+                    <span>Việc làm</span>
+                    <strong>450+</strong>
+                </div>
             </div>
+
             <div class="industry-card border-green">
                 <div class="ind-header">
                     <h3>Du lịch - Khách sạn</h3>
-                    <span class="trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +28%</span>
+                    <span class="trend-tag"><i class="fa-solid fa-arrow-trend-up"></i> +28%</span>
                 </div>
-                <p>Phục hồi mạnh mẽ với sự quay lại của khách quốc tế.</p>
-                <div class="ind-footer"><span>Việc làm</span><strong>380+</strong></div>
-            </div>
-            <div class="industry-card border-light-green">
-                <div class="ind-header">
-                    <h3>Dịch vụ - Logistics</h3>
-                    <span class="trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +15%</span>
+                <p>Phục hồi mạnh mẽ</p>
+                <div class="ind-footer">
+                    <span>Việc làm</span>
+                    <strong>380+</strong>
                 </div>
-                <p>Phát triển nhờ xu hướng thương mại điện tử bùng nổ.</p>
-                <div class="ind-footer"><span>Việc làm</span><strong>180+</strong></div>
             </div>
         </div>
 
+        <!-- HIGHLIGHT BANNER -->
         <div class="highlight-banner">
             <div class="h-left">
                 <div class="h-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                 <div class="h-text">
                     <h3>Thị trường lao động 2026</h3>
-                    <p>Bùng nổ việc làm IT và Du lịch tại Đà Nẵng</p>
+                    <p>Bùng nổ việc làm IT và du lịch</p>
                 </div>
             </div>
             <div class="h-right">
@@ -134,36 +151,6 @@
                 <p>so với năm trước</p>
             </div>
         </div>
-
-        <!-- 5 THẺ DƯỚI CÙNG -->
-        <div class="features-grid-5">
-            <div class="f-card">
-                <div class="f-icon blue-bg"><i class="fa-solid fa-rocket"></i></div>
-                <h4>Tăng trưởng</h4>
-                <p>Năm bùng nổ</p>
-            </div>
-            <div class="f-card">
-                <div class="f-icon green-bg"><i class="fa-solid fa-graduation-cap"></i></div>
-                <h4>Đào tạo</h4>
-                <p>Cơ hội học tập</p>
-            </div>
-            <div class="f-card">
-                <div class="f-icon purple-bg"><i class="fa-solid fa-globe"></i></div>
-                <h4>Hội nhập</h4>
-                <p>Đối tác nước ngoài</p>
-            </div>
-            <div class="f-card">
-                <div class="f-icon orange-bg"><i class="fa-solid fa-medal"></i></div>
-                <h4>Kỹ năng</h4>
-                <p>Dẫn đầu xu hướng</p>
-            </div>
-            <div class="f-card">
-                <div class="f-icon red-bg"><i class="fa-solid fa-heart-pulse"></i></div>
-                <h4>Phúc lợi</h4>
-                <p>Chăm sóc toàn diện</p>
-            </div>
-        </div>
     </main>
-
 </body>
 </html>

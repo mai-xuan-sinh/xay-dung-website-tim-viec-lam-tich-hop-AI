@@ -25,18 +25,20 @@
       <a href="xuhuong.html">Xu hướng</a>
       <a href="#">Hướng dẫn</a>
       <a href="#">Tạo CV</a>
-      <a href="#">Hỗ trợ</a>
+      <a href="hotro.html">Hỗ trợ</a>
     </div>
-    <div class="user-badge">
-      <a href="login.html" class="user-badge">
-  <div class="avatar">
-    <i class="fas fa-user-circle"></i> Đăng Nhập
-  </div>
-</a>
-      <a href="register.html" class="avatar">
-  <i class="fas fa-user-circle"></i> Đăng Ký
-</a>
+    <div id="userBox"></div>
+
+<div class="user-badge" id="authButtons">
+  <a href="login.html">
+    <div class="avatar">
+      <i class="fas fa-user-circle"></i> Đăng Nhập
     </div>
+  </a>
+  <a href="register.html" class="avatar">
+    <i class="fas fa-user-circle"></i> Đăng Ký
+  </a>
+</div>
   </div>
 </div>
 
@@ -69,6 +71,16 @@
           </select>
         </div>
         <button class="search-btn">Tìm kiếm <i class="fas fa-search"></i></button>
+        <div id="jobList" class="jobs-grid"></div>
+        <div id="jobList" class="jobs-grid"></div>
+
+<!-- Modal chi tiết -->
+<div id="jobModal" class="job-modal">
+  <div class="job-modal-content">
+    <span id="closeModal">&times;</span>
+    <div id="jobDetail"></div>
+  </div>
+</div>
       </div>
     </div>
   </div>
@@ -473,5 +485,6 @@
     }
   });
 </script>
+<script src="index.js"></script>
 </body>
 </html>

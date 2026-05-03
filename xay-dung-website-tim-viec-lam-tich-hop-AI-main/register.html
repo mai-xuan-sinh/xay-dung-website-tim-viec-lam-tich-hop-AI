@@ -2,7 +2,6 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Đăng ký - Danang Work</title>
 
   <link rel="stylesheet" href="register.css">
@@ -10,114 +9,111 @@
 </head>
 <body>
 
-<div class="auth-container">
+<div class="bg"></div>
 
-  <!-- LEFT -->
-  <div class="auth-left">
-    <h1>DANANG WORK</h1>
-    <p>Tìm việc thông minh tại Đà Nẵng</p>
+<div class="auth-card">
+
+  <h2>Chào mừng bạn</h2>
+  <p class="sub">Tạo tài khoản để bắt đầu</p>
+
+  <!-- TYPE -->
+  <div class="user-type-box">
+    <div class="type-card active" data-value="candidate">Ứng viên</div>
+    <div class="type-card" data-value="employer">Nhà tuyển dụng</div>
   </div>
 
-  <!-- RIGHT -->
-  <div class="auth-right">
+  <input type="hidden" id="userType" value="candidate">
 
-    <div class="register-box">
-      <h2>Tạo tài khoản</h2>
-
-      <!-- chọn loại -->
-      <div class="user-type-box">
-        <div class="type-card active" data-value="candidate">
-          Ứng viên
-        </div>
-        <div class="type-card" data-value="employer">
-          Nhà tuyển dụng
-        </div>
-      </div>
-
-      <input type="hidden" id="userType" value="candidate">
-
-      <!-- form -->
-      <div class="input-group">
-        <input type="text" placeholder="Họ và tên">
-      </div>
-
-      <div class="input-group">
-        <input type="text" placeholder="Số điện thoại">
-      </div>
-
-      <div class="input-group">
-        <input type="email" placeholder="Email">
-      </div>
-
-      <div class="input-group">
-        <input type="password" placeholder="Mật khẩu">
-      </div>
-
-      <div class="input-group">
-        <input type="password" placeholder="Nhập lại mật khẩu">
-      </div>
-      <!-- ===== EMPLOYER EXTRA ===== -->
-<div id="employerFields" style="display: none;">
-
+  <!-- INPUT -->
   <div class="input-group">
-    <input type="text" placeholder="Tên công ty">
+    <i class="fa fa-user"></i>
+    <input type="text" id="fullname" placeholder="Họ và tên">
   </div>
 
   <div class="input-group">
-    <input type="text" placeholder="Địa chỉ công ty">
+    <i class="fa fa-phone"></i>
+    <input type="text" id="phone" placeholder="Số điện thoại">
   </div>
 
   <div class="input-group">
-    <select>
-      <option value="">-- Chọn loại công ty --</option>
-      <option>Công ty IT</option>
-      <option>Marketing</option>
-      <option>Nhà hàng / Khách sạn</option>
-      <option>Sản xuất</option>
-      <option>Khác</option>
-    </select>
+    <i class="fa fa-envelope"></i>
+    <input type="email" id="email" placeholder="Email">
   </div>
 
-</div>
+  <div class="input-group">
+    <i class="fa fa-lock"></i>
+   <input type="password" id="password" placeholder="Mật khẩu">
+    <i class="fa fa-eye toggle-pass"></i>
+  </div>
 
-      <div class="terms">
-  <input type="checkbox" id="agree">
-  Tôi đồng ý với 
-  <a href="#" id="openPolicy">điều khoản & chính sách bảo mật</a>
-</div>
+  <div class="input-group">
+    <i class="fa fa-lock"></i>
+    <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu">
+  </div>
 
-      <button class="btn-register">Đăng ký</button>
-
+  <!-- EMPLOYER -->
+  <div id="employerFields">
+    <div class="input-group">
+      <i class="fa fa-building"></i>
+      <input type="text" id="companyName" placeholder="Tên công ty">
     </div>
 
+    <div class="input-group">
+      <i class="fa fa-location-dot"></i>
+      <input type="text" id="companyAddress" placeholder="Địa chỉ công ty">
+    </div>
+
+    <div class="input-group">
+      <select>
+        <option>-- Loại công ty --</option>
+        <option>IT</option>
+        <option>Marketing</option>
+        <option>Khách sạn</option>
+        <option>Sản xuất</option>
+        <option>Dịch vụ</option>
+      </select>
+    </div>
   </div>
-</div>
-    </form>
 
+  <!-- TERMS -->
+  <div class="options">
+    <label>
+  <input type="checkbox" id="agree">
+  Đồng ý 
+  <a href="#" id="openPolicy">điều khoản & bảo mật</a>
+</label>
   </div>
 
+  <!-- BUTTON -->
+ <button class="btn" id="registerBtn">Đăng ký →</button>
+
+  <p class="bottom-text">
+    Đã có tài khoản? <a href="login.html">Đăng nhập</a>
+  </p>
+
 </div>
 
+<a href="index.html" class="home-btn">
+  <i class="fa fa-home"></i>
+</a>
 
 
 <div id="policyModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h3>Chính sách & Bảo mật</h3>
+
+    <h3>Điều khoản & Bảo mật</h3>
+
     <p>
-      Đây là nội dung chính sách bảo mật của Danang Work...<br>
-      - Thu thập thông tin người dùng<br>
-      - Bảo vệ dữ liệu cá nhân<br>
-      - Không chia sẻ cho bên thứ ba...
+      • Thu thập thông tin cơ bản (email, số điện thoại)<br>
+      • Không chia sẻ dữ liệu cho bên thứ ba<br>
+      • Bảo mật tài khoản người dùng<br>
+      • Người dùng chịu trách nhiệm thông tin đăng ký<br>
+      • Không spam hoặc đăng nội dung vi phạm
     </p>
+
   </div>
 </div>
-
-
-
-<a href="index.html" class="home-btn">
-  <i class="fa fa-home"></i>
-</a>
 
 <script src="register.js"></script>
 

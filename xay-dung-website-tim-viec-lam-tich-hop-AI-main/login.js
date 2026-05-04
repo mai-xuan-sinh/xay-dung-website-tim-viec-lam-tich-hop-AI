@@ -54,5 +54,4 @@ localStorage.setItem("currentUser", JSON.stringify(loginUser));
 
     window.location.href = "index.html";
   };
-
 });

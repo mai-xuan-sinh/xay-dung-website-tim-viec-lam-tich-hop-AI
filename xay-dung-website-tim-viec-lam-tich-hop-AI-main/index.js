@@ -1,40 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ================== USER ==================
   const userBox = document.getElementById("userBox");
   const authButtons = document.getElementById("authButtons");
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
   if (user) {
-    // Ẩn nút đăng nhập/đăng ký
     authButtons.style.display = "none";
 
-    // Hiện user
-   userBox.innerHTML = `
-  <div class="user-info">
-    <i class="fa fa-user-circle avatar-icon"></i>
-    <span class="username">${user.fullname}</span>
-    <button id="logoutBtn">Đăng xuất</button>
-  </div>
-`;
+    userBox.innerHTML = `
+      <div class="user-info">
+        <i class="fa fa-user-circle avatar-icon"></i>
+        <span class="username">${user.fullname}</span>
+        <button id="logoutBtn">Đăng xuất</button>
+      </div>
+    `;
+
     document.getElementById("logoutBtn").onclick = () => {
       localStorage.removeItem("currentUser");
       location.reload();
     };
 
   } else {
-    // Hiện nút login/register
     authButtons.style.display = "flex";
-
     userBox.innerHTML = "";
   }
 
+  // ================== SEARCH ==================
+  const searchBtn = document.querySelector(".search-btn");
+
+  searchBtn.addEventListener("click", () => {
+    const keyword = document.getElementById("skillInput").value.toLowerCase();
+    const district = document.getElementById("districtSelect").value;
+
+    const filtered = jobsData.filter(job => {
+      const matchSkill =
+        job.title.toLowerCase().includes(keyword) ||
+        job.skills.some(skill => skill.includes(keyword));
+
+      const matchDistrict = !district || job.district === district;
+
+      return matchSkill && matchDistrict;
+    });
+
+    renderJobs(filtered);
+
+    // ⭐ scroll xuống danh sách
+    setTimeout(() => {
+      document.getElementById("jobList").scrollIntoView({
+        behavior: "smooth"
+      });
+    }, 100);
+  });
+
+  // BONUS: enter để search
+  document.getElementById("skillInput").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      searchBtn.click();
+    }
+  });
+
 });
-
-
-
-
-
-
 
 
 // ================== DATA ==================
@@ -77,9 +103,13 @@ const jobsData = [
   }
 ];
 
+
 // ================== RENDER ==================
 function renderJobs(list) {
   const jobList = document.getElementById("jobList");
+
+  // đảm bảo hiện ra
+  jobList.style.display = "block";
 
   if (list.length === 0) {
     jobList.innerHTML = "<p>Không tìm thấy công việc phù hợp</p>";
@@ -97,27 +127,6 @@ function renderJobs(list) {
   `).join("");
 }
 
-// ================== SEARCH ==================
-document.addEventListener("DOMContentLoaded", () => {
-  const searchBtn = document.querySelector(".search-btn");
-
-  searchBtn.addEventListener("click", () => {
-    const keyword = document.getElementById("skillInput").value.toLowerCase();
-    const district = document.getElementById("districtSelect").value;
-
-    const filtered = jobsData.filter(job => {
-      const matchSkill =
-        job.title.toLowerCase().includes(keyword) ||
-        job.skills.some(skill => skill.includes(keyword));
-
-      const matchDistrict = job.district === district;
-
-      return matchSkill && matchDistrict;
-    });
-
-    renderJobs(filtered);
-  });
-});
 
 // ================== MODAL ==================
 function viewDetail(id) {
@@ -136,10 +145,15 @@ function viewDetail(id) {
   document.getElementById("jobModal").style.display = "block";
 }
 
-// đóng modal
-document.getElementById("closeModal").onclick = () => {
-  document.getElementById("jobModal").style.display = "none";
-};
+
+// đóng modal (check null tránh lỗi)
+const closeBtn = document.getElementById("closeModal");
+if (closeBtn) {
+  closeBtn.onclick = () => {
+    document.getElementById("jobModal").style.display = "none";
+  };
+}
+
 
 // ================== APPLY ==================
 function applyJob(id) {

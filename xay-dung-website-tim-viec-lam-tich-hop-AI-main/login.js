@@ -36,9 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Sai email hoặc mật khẩu!");
       return;
     }
+const loginUser = {
+  username: user.username || user.fullname || user.email.split("@")[0],
+  email: user.email
+};
 
-    // LƯU SESSION LOGIN
-    localStorage.setItem("currentUser", JSON.stringify(user));
+localStorage.setItem("currentUser", JSON.stringify(loginUser));
 
     // GHI NHỚ
     if (remember) {

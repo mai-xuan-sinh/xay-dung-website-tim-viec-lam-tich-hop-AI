@@ -838,3 +838,50 @@ a {
 .job-item .apply-btn:hover {
   background: #16a34a;
 }
+
+
+
+
+
+
+
+
+
+/* USER BOX */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  padding: 6px 12px;
+  border-radius: 999px; /* bo tròn full */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.user-info:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* TÊN USER */
+.user-name {
+  font-weight: 500;
+  color: #333;
+}
+
+/* NÚT LOGOUT */
+.logout-btn {
+  border: none;
+  background: #ff4d4f;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #e60023;
+}

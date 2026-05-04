@@ -57,6 +57,7 @@ window.onclick = (e) => {
 
 
 
+
 const registerBtn = document.getElementById("registerBtn");
 
 registerBtn.onclick = () => {
@@ -99,7 +100,7 @@ registerBtn.onclick = () => {
 
   // TẠO USER OBJECT
   const user = {
-    fullname,
+    username: fullname,
     phone,
     email,
     password,

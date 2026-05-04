@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     userBox.innerHTML = `
       <div class="user-info">
         <i class="fa fa-user-circle avatar-icon"></i>
-        <span class="username">${user.fullname}</span>
+        <span class="username">${user.fullname || user.username}</span>
         <button id="logoutBtn">Đăng xuất</button>
       </div>
     `;
@@ -43,9 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return matchSkill && matchDistrict;
     });
 
-    renderJobs(filtered);
+    renderJobs(filtered, 1);
 
-    // ⭐ scroll xuống danh sách
     setTimeout(() => {
       document.getElementById("jobList").scrollIntoView({
         behavior: "smooth"
@@ -53,11 +52,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   });
 
-  // BONUS: enter để search
   document.getElementById("skillInput").addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      searchBtn.click();
-    }
+    if (e.key === "Enter") searchBtn.click();
+  });
+
+  // ================== LOAD DEFAULT ==================
+  const defaultDistrict = document.getElementById("districtSelect").value;
+  const defaultJobs = jobsData.filter(job => job.district === defaultDistrict);
+  renderJobs(defaultJobs, 1);
+
+  document.getElementById("districtSelect").addEventListener("change", (e) => {
+    const district = e.target.value;
+    const filtered = jobsData.filter(job => job.district === district);
+    renderJobs(filtered, 1);
   });
 
 });
@@ -65,58 +72,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ================== DATA ==================
 const jobsData = [
-  {
-    id: 1,
-    title: "Frontend Developer",
-    company: "FPT Software",
-    district: "hai-chau",
-    skills: ["react", "javascript"],
-    salary: "15-20M",
-    desc: "Làm UI, sử dụng React, teamwork Agile."
-  },
-  {
-    id: 2,
-    title: "Backend Developer",
-    company: "Axon Active",
-    district: "ngu-hanh-son",
-    skills: ["node.js", "express"],
-    salary: "18-25M",
-    desc: "Xây dựng API, làm việc với MongoDB."
-  },
-  {
-    id: 3,
-    title: "Java Developer",
-    company: "TMA Solutions",
-    district: "lien-chieu",
-    skills: ["java", "spring"],
-    salary: "20-30M",
-    desc: "Phát triển hệ thống enterprise."
-  },
-  {
-    id: 4,
-    title: "UI/UX Designer",
-    company: "Design Studio",
-    district: "hai-chau",
-    skills: ["figma", "uiux"],
-    salary: "12-18M",
-    desc: "Thiết kế giao diện app/web."
-  }
+  { id: 1, title: "Frontend Developer", company: "FPT Software", district: "hai-chau", skills: ["react", "javascript"], salary: "15-20M", desc: "Làm UI, sử dụng React, teamwork Agile." },
+  { id: 2, title: "Backend Developer", company: "Axon Active", district: "ngu-hanh-son", skills: ["node.js", "express"], salary: "18-25M", desc: "Xây dựng API, làm việc với MongoDB." },
+  { id: 3, title: "Java Developer", company: "TMA Solutions", district: "lien-chieu", skills: ["java", "spring"], salary: "20-30M", desc: "Phát triển hệ thống enterprise." },
+  { id: 4, title: "UI/UX Designer", company: "Design Studio", district: "hai-chau", skills: ["figma", "uiux"], salary: "12-18M", desc: "Thiết kế giao diện app/web." },
+
+  // 👉 thêm để test phân trang
+  { id: 5, title: "Tester", company: "ABC", district: "lien-chieu", skills: ["test"], salary: "10-15M", desc: "" },
+  { id: 6, title: "DevOps", company: "XYZ", district: "lien-chieu", skills: ["aws"], salary: "25-30M", desc: "" },
+  { id: 7, title: "Mobile Dev", company: "GameLoft", district: "lien-chieu", skills: ["flutter"], salary: "14-20M", desc: "" },
+  { id: 8, title: "Data Analyst", company: "DN Corp", district: "lien-chieu", skills: ["sql"], salary: "16-22M", desc: "" },
+  { id: 9, title: "AI Engineer", company: "FPT", district: "lien-chieu", skills: ["ai"], salary: "30-40M", desc: "" }
 ];
 
 
-// ================== RENDER ==================
-function renderJobs(list) {
+// ================== PAGINATION ==================
+let currentPage = 1;
+const jobsPerPage = 8;
+let currentList = [];
+
+function renderJobs(list, page = 1) {
   const jobList = document.getElementById("jobList");
 
-  // đảm bảo hiện ra
+  currentList = list;
+  currentPage = page;
+
   jobList.style.display = "block";
 
   if (list.length === 0) {
     jobList.innerHTML = "<p>Không tìm thấy công việc phù hợp</p>";
+    document.getElementById("pagination").innerHTML = "";
     return;
   }
 
-  jobList.innerHTML = list.map(job => `
+  const start = (page - 1) * jobsPerPage;
+  const end = start + jobsPerPage;
+  const paginatedJobs = list.slice(start, end);
+
+  jobList.innerHTML = paginatedJobs.map(job => `
     <div class="job-card">
       <div class="job-title">${job.title}</div>
       <div class="company">${job.company}</div>
@@ -125,6 +118,33 @@ function renderJobs(list) {
       <button onclick="viewDetail(${job.id})">Xem chi tiết</button>
     </div>
   `).join("");
+
+  renderPagination(list.length);
+}
+
+function renderPagination(total) {
+  const pageCount = Math.ceil(total / jobsPerPage);
+  const pagination = document.getElementById("pagination");
+
+  if (!pagination) return;
+
+  pagination.innerHTML = "";
+
+  for (let i = 1; i <= pageCount; i++) {
+    pagination.innerHTML += `
+      <button class="${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">
+        ${i}
+      </button>
+    `;
+  }
+}
+
+function changePage(page) {
+  renderJobs(currentList, page);
+
+  document.getElementById("jobList").scrollIntoView({
+    behavior: "smooth"
+  });
 }
 
 
@@ -146,7 +166,7 @@ function viewDetail(id) {
 }
 
 
-// đóng modal (check null tránh lỗi)
+// ================== CLOSE MODAL ==================
 const closeBtn = document.getElementById("closeModal");
 if (closeBtn) {
   closeBtn.onclick = () => {

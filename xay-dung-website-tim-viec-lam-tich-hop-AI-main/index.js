@@ -72,19 +72,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ================== DATA ==================
 const jobsData = [
-  { id: 1, title: "Frontend Developer", company: "FPT Software", district: "hai-chau", skills: ["react", "javascript"], salary: "15-20M", desc: "Làm UI, sử dụng React, teamwork Agile." },
-  { id: 2, title: "Backend Developer", company: "Axon Active", district: "ngu-hanh-son", skills: ["node.js", "express"], salary: "18-25M", desc: "Xây dựng API, làm việc với MongoDB." },
-  { id: 3, title: "Java Developer", company: "TMA Solutions", district: "lien-chieu", skills: ["java", "spring"], salary: "20-30M", desc: "Phát triển hệ thống enterprise." },
-  { id: 4, title: "UI/UX Designer", company: "Design Studio", district: "hai-chau", skills: ["figma", "uiux"], salary: "12-18M", desc: "Thiết kế giao diện app/web." },
 
-  // 👉 thêm để test phân trang
-  { id: 5, title: "Tester", company: "ABC", district: "lien-chieu", skills: ["test"], salary: "10-15M", desc: "" },
-  { id: 6, title: "DevOps", company: "XYZ", district: "lien-chieu", skills: ["aws"], salary: "25-30M", desc: "" },
-  { id: 7, title: "Mobile Dev", company: "GameLoft", district: "lien-chieu", skills: ["flutter"], salary: "14-20M", desc: "" },
-  { id: 8, title: "Data Analyst", company: "DN Corp", district: "lien-chieu", skills: ["sql"], salary: "16-22M", desc: "" },
-  { id: 9, title: "AI Engineer", company: "FPT", district: "lien-chieu", skills: ["ai"], salary: "30-40M", desc: "" }
+  // ===== HẢI CHÂU =====
+  { id: 0, title: "Frontend Developer", category: "Công nghệ thông tin", company: "FPT Software", district: "hai-chau", skills: ["ReactJS"], salary: "15-20M" },
+  { id: 2, title: "Backend Developer", category: "Công nghệ thông tin", company: "Axon Active", district: "hai-chau", skills: ["NodeJS"], salary: "18-25M" },
+  { id: 3, title: "Digital Marketer", category: "Marketing", company: "DN Agency", district: "hai-chau", skills: ["SEO"], salary: "12-18M" },
+  { id: 4, title: "Sales", category: "Bán lẻ", company: "Viettel", district: "hai-chau", skills: ["Giao tiếp"], salary: "10-20M" },
+  { id: 5, title: "Kế toán", category: "Kế toán - Kiểm toán", company: "ABC Corp", district: "hai-chau", skills: ["Excel"], salary: "10-15M" },
+  { id: 6, title: "UI/UX Designer", category: "Công nghệ thông tin", company: "Design Hub", district: "hai-chau", skills: ["Figma"], salary: "12-18M" },
+  { id: 7, title: "Nhân sự (HR)", category: "Tài chính - Ngân hàng", company: "HR Plus", district: "hai-chau", skills: ["Giao tiếp"], salary: "11-16M" },
+  { id: 8, title: "Content Writer", category: "Truyền thông - Báo chí", company: "Media Co", district: "hai-chau", skills: ["Content Marketing"], salary: "9-14M" },
+
+  // ===== LIÊN CHIỂU =====
+  { id: 1, title: "Backend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 2, title: "Backend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 3, title: "Backend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 4, title: "Backend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 5, title: "Backend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+ 
+  
+  { id: 10, title: "Tester", category: "Công nghệ thông tin", company: "ABC", district: "lien-chieu", skills: ["SQL"], salary: "10-15M" },
+  { id: 11, title: "DevOps", category: "Công nghệ thông tin", company: "XYZ", district: "lien-chieu", skills: ["DevOps"], salary: "25-30M" },
+  { id: 12, title: "Data Analyst", category: "Công nghệ thông tin", company: "DN Corp", district: "lien-chieu", skills: ["SQL"], salary: "16-22M" },
+  { id: 13, title: "Kỹ sư xây dựng", category: "Xây dựng", company: "Mechanical Co", district: "lien-chieu", skills: ["Excel"], salary: "12-18M" },
+  { id: 14, title: "Nhân viên kho", category: "Logistics - Vận tải", company: "Factory DN", district: "lien-chieu", skills: ["Làm việc nhóm"], salary: "8-12M" },
+  { id: 15, title: "Sales", category: "Bán lẻ", company: "Industrial Co", district: "lien-chieu", skills: ["Giao tiếp"], salary: "12-20M" },
+  { id: 16, title: "Mobile Developer", category: "Công nghệ thông tin", company: "App Co", district: "lien-chieu", skills: ["Flutter"], salary: "14-20M" },
+
+  // ===== NGŨ HÀNH SƠN =====
+  { id: 17, title: "Lễ tân", category: "Du lịch - Khách sạn", company: "Resort 5*", district: "ngu-hanh-son", skills: ["Giao tiếp"], salary: "8-12M" },
+  { id: 18, title: "Sales", category: "Du lịch - Khách sạn", company: "Travel Co", district: "ngu-hanh-son", skills: ["Giao tiếp"], salary: "10-18M" },
+  { id: 19, title: "Chăm sóc khách hàng", category: "Du lịch - Khách sạn", company: "Beach Bar", district: "ngu-hanh-son", skills: ["Giao tiếp"], salary: "7-10M" },
+  { id: 20, title: "Quản lý dự án", category: "Du lịch - Khách sạn", company: "Hotel DN", district: "ngu-hanh-son", skills: ["Làm việc nhóm"], salary: "20-30M" },
+  { id: 21, title: "Content Writer", category: "Marketing", company: "Restaurant DN", district: "ngu-hanh-son", skills: ["Content Marketing"], salary: "12-20M" },
+  { id: 22, title: "Nhân sự (HR)", category: "Tài chính - Ngân hàng", company: "Spa Resort", district: "ngu-hanh-son", skills: ["Giao tiếp"], salary: "10-15M" },
+  { id: 23, title: "Sales", category: "Nhà hàng - Ẩm thực", company: "Luxury Bar", district: "ngu-hanh-son", skills: ["Giao tiếp"], salary: "9-14M" },
+  { id: 24, title: "Digital Marketer", category: "Marketing", company: "Resort Media", district: "ngu-hanh-son", skills: ["SEO"], salary: "12-18M" },
+
+  // ===== SƠN TRÀ =====
+  { id: 25, title: "Graphic Designer", category: "Truyền thông - Báo chí", company: "Creative Co", district: "son-tra", skills: ["Photoshop"], salary: "12-18M" },
+  { id: 26, title: "Content Writer", category: "Marketing", company: "Media House", district: "son-tra", skills: ["Content Marketing"], salary: "10-15M" },
+  { id: 27, title: "Sales", category: "Bán lẻ", company: "Shop DN", district: "son-tra", skills: ["Giao tiếp"], salary: "8-12M" },
+  { id: 28, title: "SEO Specialist", category: "Marketing", company: "SEO Agency", district: "son-tra", skills: ["SEO"], salary: "12-18M" },
+  { id: 29, title: "Chăm sóc khách hàng", category: "Bán lẻ", company: "Call Center", district: "son-tra", skills: ["Giao tiếp"], salary: "9-13M" },
+  { id: 30, title: "Sales", category: "Du lịch - Khách sạn", company: "Travel Co", district: "son-tra", skills: ["Giao tiếp"], salary: "10-20M" },
+  { id: 31, title: "Content Writer", category: "Truyền thông - Báo chí", company: "Studio DN", district: "son-tra", skills: ["Content Marketing"], salary: "8-14M" },
+  { id: 32, title: "Frontend Developer", category: "Công nghệ thông tin", company: "Web Agency", district: "son-tra", skills: ["ReactJS"], salary: "15-22M" }
 ];
-
 
 // ================== PAGINATION ==================
 let currentPage = 1;

@@ -57,12 +57,13 @@
       <div class="search-bar">
         <div class="search-item autocomplete-wrapper">
           <i class="fas fa-briefcase"></i>
-          <input type="text" id="skillInput" placeholder="Vị trí, kỹ năng, công ty..." autocomplete="off">
+          <input type="text" id="skillInput" placeholder="Vị trí & công ty" autocomplete="off">
           <div id="suggestionsList" class="suggestions-dropdown"></div>
         </div>
         <div class="search-item" id="districtSelectWrapper">
           <i class="fas fa-map-marker-alt"></i>
           <select id="districtSelect">
+            <option value="" disabled selected>-- Chọn địa điểm --</option>
             <option value="lien-chieu">Quận Liên Chiểu</option>
             <option value="thanh-khe">Quận Thanh Khê</option>
             <option value="hai-chau">Quận Hải Châu</option>
@@ -382,36 +383,37 @@
   const suggestionsList = document.getElementById('suggestionsList');
 
   // Danh sách từ khóa gợi ý
-  const suggestionsData = [
-    { text: 'React', category: 'Kỹ năng', count: 45 },
-    { text: 'Frontend Developer', category: 'Vị trí', count: 32 },
-    { text: 'Backend Developer', category: 'Vị trí', count: 28 },
-    { text: 'Node.js', category: 'Kỹ năng', count: 37 },
-    { text: 'JavaScript', category: 'Kỹ năng', count: 68 },
-    { text: 'Python', category: 'Kỹ năng', count: 24 },
-    { text: 'Marketing', category: 'Ngành', count: 21 },
-    { text: 'Lễ tân', category: 'Vị trí', count: 15 },
-    { text: 'Kỹ sư xây dựng', category: 'Vị trí', count: 12 },
-    { text: 'UI/UX Designer', category: 'Vị trí', count: 18 },
-    { text: 'DevOps', category: 'Kỹ năng', count: 22 },
-    { text: 'Java', category: 'Kỹ năng', count: 31 },
-    { text: 'PHP', category: 'Kỹ năng', count: 19 },
-    { text: 'Sales', category: 'Vị trí', count: 26 },
-    { text: 'Quản lý dự án', category: 'Vị trí', count: 14 },
-    { text: 'AI Engineer', category: 'Vị trí', count: 9 },
-    { text: 'Data Analyst', category: 'Vị trí', count: 16 },
-    { text: 'Tester', category: 'Vị trí', count: 23 },
-    { text: 'Mobile Developer', category: 'Vị trí', count: 20 },
-    { text: 'Flutter', category: 'Kỹ năng', count: 11 }
-  ];
+ const suggestionsData = [
+  // ===== VỊ TRÍ =====
+  { text: 'Frontend Developer', category: 'Vị trí', count: 15 },
+  { text: 'Backend Developer', category: 'Vị trí', count: 14 },
+  { text: 'FPT Software', category: 'Công ty', count: 15 },
+  { text: 'Tester', category: 'Vị trí', count: 13 },
+  { text: 'Viettel', category: 'Công ty', count: 13 },
+  { text: 'Mobile Developer', category: 'Vị trí', count: 10 },
+  { text: 'Media Co', category: 'Công ty', count: 12 },
+  { text: 'Sales', category: 'Vị trí', count: 15 },
+  { text: 'Lễ tân', category: 'Vị trí', count: 11 },
+  { text: 'Kỹ sư xây dựng', category: 'Vị trí', count: 13 },
+  { text: 'Quản lý dự án', category: 'Vị trí', count: 10 },
 
-  // Hàm highlight từ khóa
+  // ===== CÔNG TY =====
+  { text: 'Axon Active', category: 'Công ty', count: 12 },
+  { text: 'TMA Solutions', category: 'Công ty', count: 14 },
+  { text: 'Viettel', category: 'Công ty', count: 13 },
+  { text: 'DN Agency', category: 'Công ty', count: 11 },
+  { text: 'Design Hub', category: 'Công ty', count: 10 },
+  { text: 'Media Co', category: 'Công ty', count: 12 },
+  { text: 'App Co', category: 'Công ty', count: 11 },
+  { text: 'Creative Co', category: 'Công ty', count: 13 },
+  { text: 'SEO Agency', category: 'Công ty', count: 10 }
+];
   function highlightKeyword(text, keyword) {
-    if (!keyword.trim()) return text;
-    const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-    return text.replace(regex, `<mark>$1</mark>`);
-  }
+  if (!keyword) return text;
 
+  const regex = new RegExp(`(${keyword})`, 'gi');
+  return text.replace(regex, '<b>$1</b>');
+}
   // Hàm lấy icon theo category
   function getIconForCategory(category) {
     const icons = {
@@ -486,6 +488,8 @@
       }
     }
   });
+  const district = document.getElementById("districtSelect").value;
+
 </script>
 <script src="index.js"></script>
 <script src="auth.js"></script>

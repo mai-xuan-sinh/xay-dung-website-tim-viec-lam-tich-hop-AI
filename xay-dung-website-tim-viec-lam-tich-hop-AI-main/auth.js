@@ -4,22 +4,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
-  if (user && user.username) {
-    authButtons.style.display = "none";
+  if (user) {
+    // Ẩn login/register
+    if (authButtons) authButtons.style.display = "none";
 
-   userBox.innerHTML = `
-  <div class="user-info">
-    <span class="user-name">👤 ${user.username}</span>
-    <button class="logout-btn" onclick="logout()">Đăng xuất</button>
-  </div>
-`;
-  } else {
-    userBox.innerHTML = "";
-    authButtons.style.display = "block";
+    // Hiện user + logout
+    if (userBox) {
+      userBox.innerHTML = `
+        <div class="user-info">
+          <a href="profile.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;">
+            <i class="fas fa-user-circle avatar-icon"></i>
+            <span class="username">${user.username}</span>
+          </a>
+          <button id="logoutBtn">Đăng xuất</button>
+        </div>
+      `;
+
+      // xử lý logout
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("currentUser");
+        location.reload();
+      });
+    }
   }
 });
-
-function logout() {
-  localStorage.removeItem("currentUser");
-  window.location.href = "index.html";
-}

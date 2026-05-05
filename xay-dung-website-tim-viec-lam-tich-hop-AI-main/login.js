@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 const loginUser = {
-  username: user.username || user.fullname || user.email.split("@")[0],
+  name: user.fullname || user.username || user.email.split("@")[0],
   email: user.email
 };
 

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Đà Nẵng Work - Tìm việc thông minh tại Đà Nẵng</title>
+  <!-- Google Fonts & Font Awesome for icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-header">
+  <div class="container header-flex">
+    <div class="logo-area">
+      <h1>DANANG WORK</h1>
+      <p>Tìm việc thông minh tại Đà Nẵng</p>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Trang chủ</a>
+      <a href="trangvieclam.html">Việc làm</a>
+      <a href="congty.html">Công ty</a>
+      <a href="xuhuong.html">Xu hướng</a>
+      <a href="huongdan.html">Hướng dẫn</a>
+      <a href="taocv.html">Tạo CV</a>
+      <a href="hotro.html">Hỗ trợ</a>
+    </div>
+<div class="nav-right">
+  <div id="authButtons">
+    <a href="login.html">Đăng nhập</a>
+    <a href="register.html">Đăng ký</a>
+  </div>
+
+  <div id="userBox">
+  <a href="profile.html" class="user-info">
+    <i class="fas fa-user-circle avatar-icon"></i>
+    <span class="username">Tên người dùng</span>
+  </a>
+</div>
+</div>
+</div>
+</div>
+
+<main>
+  <!-- Hero Section với Banner động theo quận -->
+  <div class="hero-section" id="dynamicHero">
+    <div class="container hero-content">
+      <div class="hero-badge">Quận Liên Chiểu · Công nghiệp & Cảng biển</div>
+      <div class="hero-title">
+        Tìm việc mơ <span>ước tại</span> Đà Nẵng
+      </div>
+      <div class="hero-desc">
+        Kết nối với hàng ngàn nhà tuyển dụng hàng đầu. Công việc phù hợp với kỹ năng và đam mê của bạn.
+      </div>
+      <div class="search-bar">
+        <div class="search-item autocomplete-wrapper">
+          <i class="fas fa-briefcase"></i>
+          <input type="text" id="skillInput" placeholder="Vị trí, kỹ năng, công ty..." autocomplete="off">
+          <div id="suggestionsList" class="suggestions-dropdown"></div>
+        </div>
+        <div class="search-item" id="districtSelectWrapper">
+          <i class="fas fa-map-marker-alt"></i>
+          <select id="districtSelect">
+            <option value="lien-chieu">Quận Liên Chiểu</option>
+            <option value="thanh-khe">Quận Thanh Khê</option>
+            <option value="hai-chau">Quận Hải Châu</option>
+            <option value="ngu-hanh-son">Quận Ngũ Hành Sơn</option>
+            <option value="son-tra">Quận Sơn Trà</option>
+            <option value="cam-le">Quận Cẩm Lệ</option>
+          </select>
+        </div>
+        <button class="search-btn">Tìm kiếm <i class="fas fa-search"></i></button>
+        </div>  
+     
+<!-- Modal chi tiết -->
+<div id="jobModal" class="job-modal">
+  <div class="job-modal-content">
+    <span id="closeModal">&times;</span>
+    <div id="jobDetail"></div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phần còn lại của trang -->
+  <div class="container">
+    <div id="jobList" class="jobs-grid"></div>
+    <div id="pagination"></div>
+    <!-- Khám phá theo lĩnh vực -->
+    <div>
+      <div class="section-title">Khám phá theo lĩnh vực</div>
+      <div class="section-sub">Chọn ngành bạn yêu thích để tìm kiếm cơ hội phù hợp nhất</div>
+      <div class="categories-grid">
+        <!-- 1. Công nghệ thông tin -->
+        <div class="cat-card">
+          <div class="cat-icon"><i class="fas fa-code"></i></div>
+          <h3>Công nghệ thông tin</h3>
+          <div class="job-count">32 việc làm</div>
+          <div class="skills-list">
+            <span>Frontend</span> <span>Backend</span> <span>DevOps</span> <span>AI</span>
+          </div>
+        </div>
+        <!-- 2. Du lịch - Khách sạn -->
+        <div class="cat-card">
+          <div class="cat-icon"><i class="fas fa-hotel"></i></div>
+          <h3>Du lịch - Khách sạn</h3>
+          <div class="job-count">27 việc làm</div>
+          <div class="skills-list">
+            <span>Hướng dẫn viên</span> <span>Lễ tân</span> <span>Quản lý resort</span>
+          </div>
+        </div>
+        <!-- 3. Kinh doanh - Bán lẻ -->
+        <div class="cat-card">
+          <div class="cat-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Kinh doanh - Bán lẻ</h3>
+          <div class="job-count">21 việc làm</div>
+          <div class="skills-list">
+            <span>Sales</span> <span>Marketing</span> <span>Quản lý</span>
+          </div>
+        </div>
+        <!-- 4. Xây dựng - BĐS -->
+        <div class="cat-card">
+          <div class="cat-icon"><i class="fas fa-hard-hat"></i></div>
+          <h3>Xây dựng - BĐS</h3>
+          <div class="job-count">21 việc làm</div>
+          <div class="skills-list">
+            <span>Kỹ sư</span> <span>Kiến trúc sư</span> <span>Giám sát</span>
+          </div>
+        </div>
+        <!-- 5. Dịch vụ - Logistics -->
+        <div class="cat-card">
+          <div class="cat-icon"><i class="fas fa-truck"></i></div>
+          <h3>Dịch vụ - Logistics</h3>
+          <div class="job-count">26 việc làm</div>
+          <div class="skills-list">
+            <span>Shipper</span> <span>CSKH</span> <span>Vận hành</span>
+          </div>
+        </div>
+        <!-- 6. Giáo dục - Đào tạo -->
+<div class="cat-card">
+  <div class="cat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+  <h3>Giáo dục - Đào tạo</h3>
+  <div class="job-count">18 việc làm</div>
+  <div class="skills-list">
+    <span>Giáo viên</span> <span>Trợ giảng</span> <span>Đào tạo</span>
+  </div>
+</div>
+
+<!-- 7. Tài chính - Ngân hàng -->
+<div class="cat-card">
+  <div class="cat-icon"><i class="fas fa-coins"></i></div>
+  <h3>Tài chính - Ngân hàng</h3>
+  <div class="job-count">22 việc làm</div>
+  <div class="skills-list">
+    <span>Kế toán</span> <span>Kiểm toán</span> <span>Đầu tư</span>
+  </div>
+</div>
+
+<!-- 8. Thiết kế - Sáng tạo -->
+<div class="cat-card">
+  <div class="cat-icon"><i class="fas fa-palette"></i></div>
+  <h3>Thiết kế - Sáng tạo</h3>
+  <div class="job-count">19 việc làm</div>
+  <div class="skills-list">
+    <span>UI/UX</span> <span>Graphic</span> <span>Video</span>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <!-- Việc làm nổi bật -->
+    <div class="featured-jobs">
+      <div class="jobs-header">
+        <div>
+          <div class="section-title" style="font-size: 1.8rem;">Việc làm nổi bật</div>
+          <div class="section-sub">Những vị trí đang được săn đón nhiều nhất</div>
+        </div>
+        <a href="#" class="view-all">Xem tất cả việc làm <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="jobs-grid">
+        <!-- Backend Developer - Axon Active -->
+        <div class="job-card">
+          <div class="job-title">Backend Developer</div>
+          <div class="company"><i class="fas fa-building"></i> Axon Active</div>
+          <div class="details">
+            <span><i class="fas fa-map-pin"></i> Ngũ Hành Sơn</span>
+            <span><i class="fas fa-clock"></i> Full-time</span>
+          </div>
+          <div class="tech-stack">
+            <span>Node.js</span> <span>Express</span> <span>MongoDB</span>
+          </div>
+          <div class="rating-salary">
+            <div class="stars">★★★★★ <span style="color:#6c7e8f;">(4.9)</span></div>
+            <div class="salary">15-25M</div>
+          </div>
+          <button class="apply-btn">Ứng tuyển ngay</button>
+        </div>
+<!-- Fullstack Developer - TMA Solutions -->
+        <div class="job-card">
+          <div class="job-title">Fullstack Developer</div>
+          <div class="company"><i class="fas fa-building"></i> TMA Solutions</div>
+          <div class="details">
+            <span><i class="fas fa-map-pin"></i> Liên Chiểu</span>
+            <span><i class="fas fa-clock"></i> Full-time</span>
+          </div>
+          <div class="tech-stack">
+            <span>Java</span> <span>Spring Boot</span> <span>React</span>
+          </div>
+          <div class="rating-salary">
+            <div class="stars">★★★★★ <span style="color:#6c7e8f;">(4.9)</span></div>
+            <div class="salary">18-28M</div>
+          </div>
+          <button class="apply-btn">Ứng tuyển ngay</button>
+        </div>
+        <!-- Mobile Developer (React Native) - GAMELOFT -->
+        <div class="job-card">
+          <div class="job-title">Mobile Developer (React Native)</div>
+          <div class="company"><i class="fas fa-building"></i> GAMELOFT</div>
+          <div class="details">
+            <span><i class="fas fa-map-pin"></i> Sơn Trà</span>
+            <span><i class="fas fa-clock"></i> Full-time</span>
+          </div>
+          <div class="tech-stack">
+            <span>React Native</span> <span>Redux</span> <span>JavaScript</span>
+          </div>
+          <div class="rating-salary">
+            <div class="stars">★★★★★ <span style="color:#6c7e8f;">(4.9)</span></div>
+            <div class="salary">14-22M</div>
+          </div>
+          <button class="apply-btn">Ứng tuyển ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Nhà tuyển dụng hàng đầu -->
+<div class="employers-section">
+  <div class="container">
+    <div style="text-align: center;">
+      <div style="font-size: 1rem; font-weight: 700; color: #14708f;">ĐỐI TÁC TIN CẬY</div>
+      <div class="section-title" style="margin-bottom: 0;">Nhà tuyển dụng hàng đầu</div>
+      <div class="section-sub">Cùng hợp tác với những doanh nghiệp uy tín tại Đà Nẵng</div>
+    </div>
+    <div class="employer-grid">
+      <div class="emp-card"><i class="fas fa-laptop-code"></i><div class="emp-name">Axon Active</div><div class="emp-jobs">26 việc làm</div><div class="emp-stars">★★★★★</div></div>
+      <div class="emp-card"><i class="fas fa-code-branch"></i><div class="emp-name">TMA Solutions</div><div class="emp-jobs">18 việc làm</div><div class="emp-stars">★★★★★</div></div>
+      <div class="emp-card"><i class="fas fa-gamepad"></i><div class="emp-name">GAMELOFT</div><div class="emp-jobs">45 việc làm</div><div class="emp-stars">★★★★★</div></div>
+      <div class="emp-card"><i class="fas fa-chart-simple"></i><div class="emp-name">FPT Software</div><div class="emp-jobs">35 việc làm</div><div class="emp-stars">★★★★★</div></div>
+      <div class="emp-card"><i class="fas fa-hotel"></i><div class="emp-name">Fusion Resort</div><div class="emp-jobs">28 việc làm</div><div class="emp-stars">★★★★★</div></div>
+      <div class="emp-card"><i class="fas fa-shipping-fast"></i><div class="emp-name">Logistics VN</div><div class="emp-jobs">50 việc làm</div><div class="emp-stars">★★★★★</div></div>
+    </div>
+    <div style="text-align: center;">
+      <a href="#" class="btn-outline-dark">Khám phá tất cả công ty <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container footer-container">
+
+    <!-- Cột 1: Logo + mô tả -->
+    <div class="footer-col">
+      <h2 class="footer-logo">DANANG WORK</h2>
+      <p class="footer-desc">
+        Nền tảng tìm việc thông minh tại Đà Nẵng. Kết nối ứng viên và doanh nghiệp nhanh chóng, hiệu quả.
+      </p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- Cột 2: Ứng viên -->
+    <div class="footer-col">
+      <h3>Dành cho ứng viên</h3>
+      <ul>
+        <li><a href="#">Tìm việc làm</a></li>
+        <li><a href="#">Tạo CV</a></li>
+        <li><a href="#">Công ty</a></li>
+        <li><a href="#">Kinh nghiệm phỏng vấn</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 3: Nhà tuyển dụng -->
+    <div class="footer-col">
+      <h3>Dành cho nhà tuyển dụng</h3>
+      <ul>
+        <li><a href="#">Đăng tin tuyển dụng</a></li>
+        <li><a href="#">Tìm ứng viên</a></li>
+        <li><a href="#">Giải pháp HR</a></li>
+        <li><a href="#">Bảng giá</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 4: Liên hệ -->
+    <div class="footer-col">
+      <h3>Liên hệ</h3>
+      <ul>
+        <li><i class="fas fa-map-marker-alt"></i> Đà Nẵng, Việt Nam</li>
+        <li><i class="fas fa-envelope"></i> support@danangwork.vn</li>
+        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>© 2026 DANANG WORK. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // JavaScript để thay đổi banner và badge khi chọn quận
+  const heroSection = document.getElementById('dynamicHero');
+  const districtSelect = document.getElementById('districtSelect');
+  const heroBadge = document.querySelector('.hero-badge');
+
+  // Định nghĩa thông tin cho từng quận
+ const districtData = {
+  'lien-chieu': {
+    name: 'Liên Chiểu',
+    desc: 'Công nghiệp & Cảng biển',
+    img: 'img/lienchieu.jpg'
+  },
+  'thanh-khe': {
+    name: 'Thanh Khê',
+    desc: 'Trung tâm thương mại & dịch vụ',
+    img: 'img/thanhkhe.jpg'
+  },
+  'hai-chau': {
+    name: 'Hải Châu',
+    desc: 'Trung tâm sầm uất - Thương mại sôi động',
+    img: 'img/haichau.jpg'
+  },
+  'ngu-hanh-son': {
+    name: 'Ngũ Hành Sơn',
+    desc: 'Tâm linh - nghỉ dưỡng',
+    img: 'img/nguhanhson.jpg'
+  },
+  'son-tra': {
+    name: 'Sơn Trà',
+    desc: 'Bán đảo xanh - Resort & Du lịch',
+    img: 'img/sontra.jpg'
+  },
+  'cam-le': {
+    name: 'Cẩm Lệ',
+    desc: 'Khu đô thị mới - Phát triển năng động',
+    img: 'img/camle.jpg'
+  }
+};
+
+  function updateBanner(districtKey) {
+  const data = districtData[districtKey];
+  if (data) {
+    heroBadge.textContent = `Quận ${data.name} · ${data.desc}`;
+
+    // 👉 chỉ set 1 ảnh duy nhất theo quận
+    heroSection.style.backgroundImage = `url("${data.img}")`;
+
+    heroSection.style.backgroundSize = 'cover';
+    heroSection.style.backgroundPosition = 'center 30%';
+  }
+}
+
+  // Lắng nghe sự kiện khi thay đổi lựa chọn
+  districtSelect.addEventListener('change', (e) => {
+    updateBanner(e.target.value);
+  });
+
+  // Khởi tạo banner mặc định (Liên Chiểu)
+  updateBanner('lien-chieu');
+
+  // ========== AUTOCOMPLETE / DROPDOWN CHO Ô TÌM KIẾM ==========
+  const skillInput = document.getElementById('skillInput');
+  const suggestionsList = document.getElementById('suggestionsList');
+
+  // Danh sách từ khóa gợi ý
+  const suggestionsData = [
+    { text: 'React', category: 'Kỹ năng', count: 45 },
+    { text: 'Frontend Developer', category: 'Vị trí', count: 32 },
+    { text: 'Backend Developer', category: 'Vị trí', count: 28 },
+    { text: 'Node.js', category: 'Kỹ năng', count: 37 },
+    { text: 'JavaScript', category: 'Kỹ năng', count: 68 },
+    { text: 'Python', category: 'Kỹ năng', count: 24 },
+    { text: 'Marketing', category: 'Ngành', count: 21 },
+    { text: 'Lễ tân', category: 'Vị trí', count: 15 },
+    { text: 'Kỹ sư xây dựng', category: 'Vị trí', count: 12 },
+    { text: 'UI/UX Designer', category: 'Vị trí', count: 18 },
+    { text: 'DevOps', category: 'Kỹ năng', count: 22 },
+    { text: 'Java', category: 'Kỹ năng', count: 31 },
+    { text: 'PHP', category: 'Kỹ năng', count: 19 },
+    { text: 'Sales', category: 'Vị trí', count: 26 },
+    { text: 'Quản lý dự án', category: 'Vị trí', count: 14 },
+    { text: 'AI Engineer', category: 'Vị trí', count: 9 },
+    { text: 'Data Analyst', category: 'Vị trí', count: 16 },
+    { text: 'Tester', category: 'Vị trí', count: 23 },
+    { text: 'Mobile Developer', category: 'Vị trí', count: 20 },
+    { text: 'Flutter', category: 'Kỹ năng', count: 11 }
+  ];
+
+  // Hàm highlight từ khóa
+  function highlightKeyword(text, keyword) {
+    if (!keyword.trim()) return text;
+    const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(regex, `<mark>$1</mark>`);
+  }
+
+  // Hàm lấy icon theo category
+  function getIconForCategory(category) {
+    const icons = {
+      'Kỹ năng': 'code',
+      'Vị trí': 'user-tie',
+      'Ngành': 'chart-line'
+    };
+    return icons[category] || 'tag';
+  }
+
+  // Hàm hiển thị gợi ý
+  function showSuggestions(filterText = '') {
+    const keyword = filterText.trim().toLowerCase();
+    
+    let filtered = suggestionsData;
+    
+    if (keyword) {
+      filtered = suggestionsData.filter(item => 
+        item.text.toLowerCase().includes(keyword)
+      );
+    }
+    
+    filtered = filtered.slice(0, 8);
+    
+    if (filtered.length === 0) {
+      suggestionsList.classList.remove('show');
+      return;
+    }
+    
+    suggestionsList.innerHTML = filtered.map(item => `
+      <div class="suggestion-item" data-value="${item.text}">
+        <i class="fas fa-${getIconForCategory(item.category)}"></i>
+        <span class="suggestion-text">${highlightKeyword(item.text, keyword)}</span>
+        <span class="suggestion-count">${item.count} việc</span>
+      </div>
+    `).join('');
+    
+    suggestionsList.classList.add('show');
+    
+    document.querySelectorAll('.suggestion-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const value = item.getAttribute('data-value');
+        skillInput.value = value;
+        suggestionsList.classList.remove('show');
+      });
+    });
+  }
+
+  // Lắng nghe sự kiện
+  skillInput.addEventListener('input', (e) => {
+    showSuggestions(e.target.value);
+  });
+
+  skillInput.addEventListener('focus', () => {
+    showSuggestions(skillInput.value);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!skillInput.contains(e.target) && !suggestionsList.contains(e.target)) {
+      suggestionsList.classList.remove('show');
+    }
+  });
+
+  skillInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && suggestionsList.classList.contains('show')) {
+      const firstSuggestion = document.querySelector('.suggestion-item');
+      if (firstSuggestion) {
+        e.preventDefault();
+        const value = firstSuggestion.getAttribute('data-value');
+        skillInput.value = value;
+        suggestionsList.classList.remove('show');
+      }
+    }
+  });
+</script>
+<script src="index.js"></script>
+<script src="auth.js"></script>
+<link rel="stylesheet" href="auth.css">
+</body>
+</html>

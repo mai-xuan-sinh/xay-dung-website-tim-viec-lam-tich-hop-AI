@@ -628,6 +628,7 @@ a {
     .hero h1 { font-size: 32px; }
     .nav-links, .nav-actions .btn-text { display: none; }
     .quick-video-box { flex-direction: column; }
+<<<<<<< HEAD
 }
 
 
@@ -722,4 +723,6 @@ a {
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(27,107,135,0.4);
   opacity: 0.95;
+=======
+>>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
 }

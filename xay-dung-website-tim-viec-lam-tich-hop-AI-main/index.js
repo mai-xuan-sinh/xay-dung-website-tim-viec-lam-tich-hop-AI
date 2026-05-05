@@ -1,11 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+<<<<<<< HEAD
   // ================== USER ==================
+=======
+>>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
   const userBox = document.getElementById("userBox");
   const authButtons = document.getElementById("authButtons");
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
   if (user) {
+<<<<<<< HEAD
     authButtons.style.display = "none";
 
     userBox.innerHTML = `
@@ -16,17 +20,110 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
+=======
+    // Ẩn nút đăng nhập/đăng ký
+    authButtons.style.display = "none";
+
+    // Hiện user
+   userBox.innerHTML = `
+  <div class="user-info">
+    <i class="fa fa-user-circle avatar-icon"></i>
+    <span class="username">${user.fullname}</span>
+    <button id="logoutBtn">Đăng xuất</button>
+  </div>
+`;
+>>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
     document.getElementById("logoutBtn").onclick = () => {
       localStorage.removeItem("currentUser");
       location.reload();
     };
 
   } else {
+<<<<<<< HEAD
     authButtons.style.display = "flex";
     userBox.innerHTML = "";
   }
 
   // ================== SEARCH ==================
+=======
+    // Hiện nút login/register
+    authButtons.style.display = "flex";
+
+    userBox.innerHTML = "";
+  }
+
+});
+
+
+
+
+
+
+
+
+// ================== DATA ==================
+const jobsData = [
+  {
+    id: 1,
+    title: "Frontend Developer",
+    company: "FPT Software",
+    district: "hai-chau",
+    skills: ["react", "javascript"],
+    salary: "15-20M",
+    desc: "Làm UI, sử dụng React, teamwork Agile."
+  },
+  {
+    id: 2,
+    title: "Backend Developer",
+    company: "Axon Active",
+    district: "ngu-hanh-son",
+    skills: ["node.js", "express"],
+    salary: "18-25M",
+    desc: "Xây dựng API, làm việc với MongoDB."
+  },
+  {
+    id: 3,
+    title: "Java Developer",
+    company: "TMA Solutions",
+    district: "lien-chieu",
+    skills: ["java", "spring"],
+    salary: "20-30M",
+    desc: "Phát triển hệ thống enterprise."
+  },
+  {
+    id: 4,
+    title: "UI/UX Designer",
+    company: "Design Studio",
+    district: "hai-chau",
+    skills: ["figma", "uiux"],
+    salary: "12-18M",
+    desc: "Thiết kế giao diện app/web."
+  }
+];
+
+// ================== RENDER ==================
+function renderJobs(list) {
+  const jobList = document.getElementById("jobList");
+
+  if (list.length === 0) {
+    jobList.innerHTML = "<p>Không tìm thấy công việc phù hợp</p>";
+    return;
+  }
+
+  jobList.innerHTML = list.map(job => `
+    <div class="job-card">
+      <div class="job-title">${job.title}</div>
+      <div class="company">${job.company}</div>
+      <div>📍 ${job.district}</div>
+      <div>💰 ${job.salary}</div>
+      <button onclick="viewDetail(${job.id})">Xem chi tiết</button>
+    </div>
+  `).join("");
+}
+
+// ================== SEARCH ==================
+document.addEventListener("DOMContentLoaded", () => {
+>>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
   const searchBtn = document.querySelector(".search-btn");
 
   searchBtn.addEventListener("click", () => {
@@ -38,11 +135,16 @@ document.addEventListener("DOMContentLoaded", () => {
         job.title.toLowerCase().includes(keyword) ||
         job.skills.some(skill => skill.includes(keyword));
 
+<<<<<<< HEAD
       const matchDistrict = !district || job.district === district;
+=======
+      const matchDistrict = job.district === district;
+>>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
 
       return matchSkill && matchDistrict;
     });
 
+<<<<<<< HEAD
     renderJobs(filtered, 1);
 
     setTimeout(() => {
@@ -148,6 +250,12 @@ function changePage(page) {
 }
 
 
+=======
+    renderJobs(filtered);
+  });
+});
+
+>>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
 // ================== MODAL ==================
 function viewDetail(id) {
   const job = jobsData.find(j => j.id === id);
@@ -165,6 +273,7 @@ function viewDetail(id) {
   document.getElementById("jobModal").style.display = "block";
 }
 
+<<<<<<< HEAD
 
 // ================== CLOSE MODAL ==================
 const closeBtn = document.getElementById("closeModal");
@@ -174,6 +283,12 @@ if (closeBtn) {
   };
 }
 
+=======
+// đóng modal
+document.getElementById("closeModal").onclick = () => {
+  document.getElementById("jobModal").style.display = "none";
+};
+>>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
 
 // ================== APPLY ==================
 function applyJob(id) {

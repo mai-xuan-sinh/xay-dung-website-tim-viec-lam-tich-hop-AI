@@ -36,18 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Sai email hoặc mật khẩu!");
       return;
     }
-<<<<<<< HEAD
-const loginUser = {
-  name: user.fullname || user.username || user.email.split("@")[0],
-  email: user.email
-};
-
-localStorage.setItem("currentUser", JSON.stringify(loginUser));
-=======
 
     // LƯU SESSION LOGIN
     localStorage.setItem("currentUser", JSON.stringify(user));
->>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
 
     // GHI NHỚ
     if (remember) {
@@ -60,8 +51,5 @@ localStorage.setItem("currentUser", JSON.stringify(loginUser));
 
     window.location.href = "index.html";
   };
-<<<<<<< HEAD
-=======
 
->>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
 });

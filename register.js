@@ -57,10 +57,6 @@ window.onclick = (e) => {
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
 const registerBtn = document.getElementById("registerBtn");
 
 registerBtn.onclick = () => {
@@ -103,11 +99,7 @@ registerBtn.onclick = () => {
 
   // TẠO USER OBJECT
   const user = {
-<<<<<<< HEAD
-    username: fullname,
-=======
     fullname,
->>>>>>> 866eae0623f13c78d08325e25532daf27c3bb671
     phone,
     email,
     password,

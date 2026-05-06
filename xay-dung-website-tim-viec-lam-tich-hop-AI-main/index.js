@@ -58,15 +58,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ================== LOAD DEFAULT ==================
   const defaultDistrict = document.getElementById("districtSelect").value;
+
+if (!defaultDistrict) {
+  document.getElementById("jobList").innerHTML =
+    "<p>Vui lòng chọn địa điểm để xem việc làm</p>";
+} else {
   const defaultJobs = jobsData.filter(job => job.district === defaultDistrict);
   renderJobs(defaultJobs, 1);
+}
 
   document.getElementById("districtSelect").addEventListener("change", (e) => {
-    const district = e.target.value;
-    const filtered = jobsData.filter(job => job.district === district);
-    renderJobs(filtered, 1);
-  });
+  const district = e.target.value;
 
+  if (!district) {
+    heroBadge.textContent = "Vui lòng chọn địa điểm";
+    document.getElementById("jobList").innerHTML =
+      "<p>Vui lòng chọn địa điểm để xem việc làm</p>";
+    return;
+  }
+
+  updateBanner(district);
+
+  const filtered = jobsData.filter(job => job.district === district);
+  renderJobs(filtered, 1);
+});
 });
 
 
@@ -84,20 +99,37 @@ const jobsData = [
   { id: 8, title: "Content Writer", category: "Truyền thông - Báo chí", company: "Media Co", district: "hai-chau", skills: ["Content Marketing"], salary: "9-14M" },
 
   // ===== LIÊN CHIỂU =====
-  { id: 1, title: "Backend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
-  { id: 2, title: "Backend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
-  { id: 3, title: "Backend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
-  { id: 4, title: "Backend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
-  { id: 5, title: "Backend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 1, title: "Backend Developer", category: "Công nghệ thông tin", company: "Foxlink Da Nang Electronics", district: "Lô A1, Khu Công nghệ cao Đà Nẵng", skills: ["Backend"], salary: "20-30M" },
+  { id: 2, title: "Backend Developer", category: "Công nghệ thông tin", company: "DIP Holding", district: "KCN trên địa bàn Liên Chiểu", skills: ["Backend"], salary: "30-40M" },
+  { id: 3, title: "Backend Developer", category: "Công nghệ thông tin", company: "FPT Software", district: "Chi nhánh phụ cận", skills: ["Backend"], salary: "10-15M" },
+  { id: 4, title: "Backend Developer", category: "Công nghệ thông tin", company: "AZ-ROBOTICS Co., Ltd", district: "Khu vực kỹ thuật cao tại Liên Chiểu.", skills: ["Backend"], salary: "40-50M" },
+  { id: 5, title: "Backend Developer", category: "Công nghệ thông tin", company: "ĐH Bách Khoa/Sư Phạm", district: "Khu vực Liên Chiểu", skills: ["Backend"], salary: "20-40M" },
+
+  { id: 6, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 7, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 8, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 9, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 10, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  
+  { id: 11, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 12, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 13, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 14, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 15, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+
+  { id: 16, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 17, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 18, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 19, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
+  { id: 20, title: "Frontend Developer", category: "Công nghệ thông tin", company: "TMA Solutions", district: "lien-chieu", skills: ["Java"], salary: "20-30M" },
  
   
-  { id: 10, title: "Tester", category: "Công nghệ thông tin", company: "ABC", district: "lien-chieu", skills: ["SQL"], salary: "10-15M" },
-  { id: 11, title: "DevOps", category: "Công nghệ thông tin", company: "XYZ", district: "lien-chieu", skills: ["DevOps"], salary: "25-30M" },
-  { id: 12, title: "Data Analyst", category: "Công nghệ thông tin", company: "DN Corp", district: "lien-chieu", skills: ["SQL"], salary: "16-22M" },
-  { id: 13, title: "Kỹ sư xây dựng", category: "Xây dựng", company: "Mechanical Co", district: "lien-chieu", skills: ["Excel"], salary: "12-18M" },
-  { id: 14, title: "Nhân viên kho", category: "Logistics - Vận tải", company: "Factory DN", district: "lien-chieu", skills: ["Làm việc nhóm"], salary: "8-12M" },
-  { id: 15, title: "Sales", category: "Bán lẻ", company: "Industrial Co", district: "lien-chieu", skills: ["Giao tiếp"], salary: "12-20M" },
-  { id: 16, title: "Mobile Developer", category: "Công nghệ thông tin", company: "App Co", district: "lien-chieu", skills: ["Flutter"], salary: "14-20M" },
+  { id: 21, title: "Tester", category: "Công nghệ thông tin", company: "ABC", district: "lien-chieu", skills: ["SQL"], salary: "10-15M" },
+  { id: 22, title: "Data Analyst", category: "Công nghệ thông tin", company: "DN Corp", district: "lien-chieu", skills: ["SQL"], salary: "16-22M" },
+  { id: 23, title: "Kỹ sư xây dựng", category: "Xây dựng", company: "Mechanical Co", district: "lien-chieu", skills: ["Excel"], salary: "12-18M" },
+  { id: 24, title: "Nhân viên kho", category: "Logistics - Vận tải", company: "Factory DN", district: "lien-chieu", skills: ["Làm việc nhóm"], salary: "8-12M" },
+  { id: 25, title: "Sales", category: "Bán lẻ", company: "Industrial Co", district: "lien-chieu", skills: ["Giao tiếp"], salary: "12-20M" },
+  { id: 26, title: "Mobile Developer", category: "Công nghệ thông tin", company: "App Co", district: "lien-chieu", skills: ["Flutter"], salary: "14-20M" },
 
   // ===== NGŨ HÀNH SƠN =====
   { id: 17, title: "Lễ tân", category: "Du lịch - Khách sạn", company: "Resort 5*", district: "ngu-hanh-son", skills: ["Giao tiếp"], salary: "8-12M" },

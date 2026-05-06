@@ -47,7 +47,7 @@
   <!-- Hero Section với Banner động theo quận -->
   <div class="hero-section" id="dynamicHero">
     <div class="container hero-content">
-      <div class="hero-badge">Quận Liên Chiểu · Công nghiệp & Cảng biển</div>
+      <div class="hero-badge">Quận Liên Chiểu · Công nghiệp & Cảng biển</div> 
       <div class="hero-title">
         Tìm việc mơ <span>ước tại</span> Đà Nẵng
       </div>
@@ -375,8 +375,12 @@
     updateBanner(e.target.value);
   });
 
-  // Khởi tạo banner mặc định (Liên Chiểu)
-  updateBanner('lien-chieu');
+  
+  heroBadge.textContent = "ĐÀ NẴNG ";
+heroSection.style.backgroundImage = 'url("img/bannerchinh.jpg")';
+heroSection.style.backgroundSize = "cover";
+heroSection.style.backgroundPosition = "center";
+heroSection.style.backgroundRepeat = "no-repeat";
 
   // ========== AUTOCOMPLETE / DROPDOWN CHO Ô TÌM KIẾM ==========
   const skillInput = document.getElementById('skillInput');
